@@ -1,5 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
 
+## Usado para ignorar username (campo que o Django usa)
+
 class CustomUserManager(BaseUserManager):
     # Sobrescreve create_user para aceitar email como campo principal
     def create_user(self, email, password, **extra_fields):
