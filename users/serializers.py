@@ -27,10 +27,10 @@ class RegistroUsuario(serializers.ModelSerializer):
             password = validated_data['password'],
             first_name = validated_data.get('first_name', ''),
             last_name = validated_data.get('last_name', ''),
-            data_nascimento = validated_data.get('dataNascimento'),
+            data_nascimento = validated_data.get('data_nascimento'),
             altura = validated_data.get('altura'),
             peso = validated_data.get('peso'),
-            acad_experiencia = validated_data.get('tempoExperiencia', 0.0),
+            acad_experiencia = validated_data.get('acad_experiencia', 0.0),
         )
 
         return user

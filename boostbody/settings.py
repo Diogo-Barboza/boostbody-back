@@ -121,3 +121,27 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 AUTH_USER_MODEL = 'users.User'
+
+# Configuração do Django REST Framework (DRF)
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # Esta linha garante que, por padrão, todas as rotas
+        # que precisam de autenticação verifiquem o JWT
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        # Por padrão, apenas usuários autenticados podem acessar
+        # Você anula isso em views específicas (como a RegisterUserView)
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
+
+# Configuração do JWT
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    # Define por quanto tempo o token de acesso (access token) será válido
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    # O token de refresh permite obter um novo access token sem fazer login novamente
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+}
