@@ -16,5 +16,10 @@ class RegistrarUserView(APIView):
         if serializer.is_valid():
             user = serializer.save()
 
-            
+            return Response(
+                {"message": "Usuário registrado com sucesso"},
+                status = status.HTTP_201_CREATED
+            )
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
